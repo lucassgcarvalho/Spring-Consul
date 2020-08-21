@@ -1,0 +1,8 @@
+Start Consul exe ->  consul.exe agent -dev
+
+Create these topics
+    http://localhost:8500/ui/dc1/kv/config/
+    http://localhost:8500/ui/dc1/kv/config/matrix/
+    http://localhost:8500/ui/dc1/kv/config/matrix/bullet.main
+    http://localhost:8500/ui/dc1/kv/config/matrix/savior.action
+    http://localhost:8500/ui/dc1/kv/config/matrix/savior.name
