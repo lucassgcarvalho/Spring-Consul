@@ -1,13 +1,14 @@
 package br.com.matrix.zion;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 @RefreshScope
 @Configuration
 //@ConfigurationProperties(prefix = "savior")
+@Data
 public class MatrixSaviorProperties {
 
 
@@ -23,21 +24,5 @@ public class MatrixSaviorProperties {
                 "saviorName='" + saviorName + '\'' +
                 ", saviorAction='" + saviorAction + '\'' +
                 '}';
-    }
-
-    public String getSaviorAction() {
-        return saviorAction;
-    }
-
-    public void setSaviorAction(String saviorAction) {
-        this.saviorAction = saviorAction;
-    }
-
-    public String getSaviorName() {
-        return saviorName;
-    }
-
-    public void setSaviorName(String saviorName) {
-        this.saviorName = saviorName;
     }
 }

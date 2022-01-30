@@ -1,0 +1,67 @@
+server:
+  port: '8081'
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/auth/realms/matrix/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/auth/realms/matrix
+    user:
+      password: lucassgc26
+      name: lucas.sgcarvalho
+
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: 'true'
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: 'true'
+          uri: ssh://localhost/config-repo
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
+      host: 127.0.0.1
+      port: '8500'
+
+  config:
+    import: optional:configserver:http://root:s3cr3t@localhost:8888
+  application:
+    name: essential
+  profiles:
+    active: development
+
+
+  datasource:
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    initialize: 'true'
+
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: matrix
+  credentials:
+    secret: gugztR4dyos633dj3Zb1qomompRkUlcY
+  ssl-required: external
+  resource: matrix-app
+  principal-attribute: preferred_username
+  public-client: 'false'
+  use-resource-role-mappings: 'true'
+
